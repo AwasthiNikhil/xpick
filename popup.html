@@ -43,6 +43,21 @@
       padding: 8px;
       border-radius: 4px;
     }
+    .hotkey-row {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      margin-bottom: 10px;
+      font-size: 12px;
+    }
+    .hotkey-row button {
+      width: auto;
+      margin: 0;
+      padding: 6px 8px;
+      background: #e5e7eb;
+      color: #333;
+    }
+    #hotkeyBtn { flex: 1; font-family: monospace; }
     kbd {
       background: #e5e7eb;
       padding: 2px 4px;
@@ -53,6 +68,12 @@
 </head>
 <body>
   <h3>XPath Grabber</h3>
+  <div class="hotkey-row">
+    <span>Hotkey:</span>
+    <button id="hotkeyBtn" title="Click, then press your combo">Not set</button>
+    <button id="hotkeyClear" title="Remove hotkey">✕</button>
+  </div>
+  <div id="controls">
   <button id="toggleBtn" class="btn-toggle">Enable Inspector</button>
   <button id="freezeBtn" class="btn-freeze">Freeze in 3s (For Hover States)</button>
   
@@ -61,7 +82,8 @@
     • Hover over any element.<br>
     • Press <kbd>C</kbd> or <b>Click</b> to copy relative XPath.<br>
     • Press <kbd>Shift + C</kbd> for absolute XPath.<br>
-    • Press <kbd>Esc</kbd> to exit.
+    • Press <kbd>Esc</kbd> or your hotkey to exit.
+  </div>
   </div>
 
   <script src="popup.js"></script>

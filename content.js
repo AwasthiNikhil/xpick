@@ -210,6 +210,22 @@
     return isInspectorActive;
   }
 
+  // User-configured activation hotkey (set from the popup)
+  let hotkey = null;
+  chrome.storage.sync.get("hotkey", (d) => (hotkey = d.hotkey || null));
+  chrome.storage.onChanged.addListener((c) => {
+    if (c.hotkey) hotkey = c.hotkey.newValue || null;
+  });
+
+  // Registered before onKeyDown, so a matching combo never reaches the 'C' handler
+  document.addEventListener("keydown", (e) => {
+    if (!hotkey || e.repeat || e.code !== hotkey.code) return;
+    if (["ctrlKey", "altKey", "shiftKey", "metaKey"].some((m) => e[m] !== hotkey[m])) return;
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    toggleInspector();
+  }, true);
+
   chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     if (request.action === "ping") {
       sendResponse({ status: "alive" });
