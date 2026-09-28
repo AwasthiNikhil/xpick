@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body {
+      width: 280px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      padding: 14px;
+      margin: 0;
+      color: #333;
+    }
+    h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+    button {
+      width: 100%;
+      padding: 9px;
+      margin-bottom: 8px;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 13px;
+    }
+    .btn-toggle {
+      background-color: #2563eb;
+      color: white;
+    }
+    .btn-freeze {
+      background-color: #f59e0b;
+      color: white;
+    }
+    .btn-toggle:hover { background-color: #1d4ed8; }
+    .btn-freeze:hover { background-color: #d97706; }
+    .instructions {
+      font-size: 11px;
+      color: #666;
+      line-height: 1.4;
+      background: #f3f4f6;
+      padding: 8px;
+      border-radius: 4px;
+    }
+    kbd {
+      background: #e5e7eb;
+      padding: 2px 4px;
+      border-radius: 3px;
+      font-family: monospace;
+    }
+  </style>
+</head>
+<body>
+  <h3>XPath Grabber</h3>
+  <button id="toggleBtn" class="btn-toggle">Enable Inspector</button>
+  <button id="freezeBtn" class="btn-freeze">Freeze in 3s (For Hover States)</button>
+  
+  <div class="instructions">
+    <b>While Inspector is Active:</b><br>
+    • Hover over any element.<br>
+    • Press <kbd>C</kbd> or <b>Click</b> to copy relative XPath.<br>
+    • Press <kbd>Shift + C</kbd> for absolute XPath.<br>
+    • Press <kbd>Esc</kbd> to exit.
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
