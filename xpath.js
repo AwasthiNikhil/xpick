@@ -201,5 +201,5 @@
     }
   }
 
-  window.XPathGrabber = { relativeXPath, absoluteXPath, cssSelector, find, literal, isGeneratedId, pointsTo };
+  window.XPick = { relativeXPath, absoluteXPath, cssSelector, find, literal, isGeneratedId, pointsTo };
 })();

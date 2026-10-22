@@ -5,7 +5,7 @@
   // can't save history or receive messages), is shut down and replaced.
   const runtime = chrome.runtime;
   const VERSION = runtime.getManifest().version;
-  const previous = window.__XPATH_GRABBER__;
+  const previous = window.__XPICK__;
   if (previous && previous.version === VERSION && previous.alive()) return;
   try {
     previous?.shutdown();
@@ -13,7 +13,7 @@
     // an old copy that can't be shut down cleanly; ours takes over anyway
   }
 
-  const { relativeXPath, absoluteXPath, cssSelector, find } = window.XPathGrabber;
+  const { relativeXPath, absoluteXPath, cssSelector, find } = window.XPick;
   const HISTORY_SIZE = 10;
 
   let isInspectorActive = false;
@@ -404,10 +404,10 @@
     } catch {
       // already cut off from the extension
     }
-    if (window.__XPATH_GRABBER__?.shutdown === shutdown) delete window.__XPATH_GRABBER__;
+    if (window.__XPICK__?.shutdown === shutdown) delete window.__XPICK__;
   }
 
-  window.__XPATH_GRABBER__ = { version: VERSION, alive: () => !!runtime?.id, shutdown };
+  window.__XPICK__ = { version: VERSION, alive: () => !!runtime?.id, shutdown };
 
   function onMessage(request, sender, sendResponse) {
     if (request.action === "ping") {

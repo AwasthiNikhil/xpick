@@ -16,7 +16,7 @@ test.beforeAll(async () => {
   // In real use, clicking the button or pressing the shortcut grants activeTab.
   // Tests can't press an extension shortcut, so this copy is granted the
   // fixture origin up front instead. The shipped manifest is checked below.
-  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "xpath-grabber-"));
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "xpick-"));
   for (const f of fs.readdirSync(ROOT)) {
     if (/\.(js|css|html|json)$/.test(f) && !["package.json", "package-lock.json", "playwright.config.js"].includes(f)) {
       fs.copyFileSync(path.join(ROOT, f), path.join(dir, f));
@@ -245,7 +245,7 @@ test("a copy cut off by an extension reload hands over to a fresh one, and histo
   // answer and ensureInjected injects again. Simulate exactly that.
   await worker.evaluate(async (url) => {
     const [tab] = await chrome.tabs.query({ url });
-    await chrome.scripting.executeScript({ target: { tabId: tab.id }, func: () => (window.__XPATH_GRABBER__.alive = () => false) });
+    await chrome.scripting.executeScript({ target: { tabId: tab.id }, func: () => (window.__XPICK__.alive = () => false) });
     await chrome.scripting.executeScript({ target: { tabId: tab.id }, files: ["xpath.js", "content.js"] });
     await chrome.storage.local.clear();
   }, page.url());

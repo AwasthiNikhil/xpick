@@ -9,7 +9,7 @@ const XPATH_JS = path.join(__dirname, "..", "xpath.js");
 // matches exactly that element in its own document.
 async function locate(page, handle, frame = page.mainFrame()) {
   return frame.evaluate((handle) => {
-    const { relativeXPath, absoluteXPath, cssSelector, pointsTo } = window.XPathGrabber;
+    const { relativeXPath, absoluteXPath, cssSelector, pointsTo } = window.XPick;
     const el = document.querySelector(`[data-case="${handle}"]`);
     const rel = relativeXPath(el);
     const abs = absoluteXPath(el);
@@ -82,7 +82,7 @@ test("inside an iframe, locators are relative to the frame's document", async ({
 
 test("generated-looking ids are recognised, ordinary ones aren't", async ({ page }) => {
   const result = await page.evaluate(() =>
-    Object.fromEntries(["save", "h1", "step2", "main-nav", ":r1:", "react-:r9:", "ember412", "mui-12", "order-20231104", "3f2b8c1a-9d4e-4b7a-8c2d-1e5f6a7b8c9d"].map((id) => [id, window.XPathGrabber.isGeneratedId(id)])),
+    Object.fromEntries(["save", "h1", "step2", "main-nav", ":r1:", "react-:r9:", "ember412", "mui-12", "order-20231104", "3f2b8c1a-9d4e-4b7a-8c2d-1e5f6a7b8c9d"].map((id) => [id, window.XPick.isGeneratedId(id)])),
   );
   expect(result).toEqual({
     save: false, h1: false, step2: false, "main-nav": false,
@@ -92,7 +92,7 @@ test("generated-looking ids are recognised, ordinary ones aren't", async ({ page
 
 test("XPath string literals are valid for any mix of quotes", async ({ page }) => {
   const ok = await page.evaluate(() => {
-    const { literal } = window.XPathGrabber;
+    const { literal } = window.XPick;
     return [`plain`, `it's`, `say "hi"`, `it's "both"`, `"`, `'`, `""''`].every((v) => document.evaluate(literal(v), document, null, XPathResult.STRING_TYPE, null).stringValue === v);
   });
   expect(ok).toBe(true);
@@ -100,7 +100,7 @@ test("XPath string literals are valid for any mix of quotes", async ({ page }) =
 
 test("sweep: every element on the page gets locators that match only it", async ({ page }) => {
   const failures = await page.evaluate(() => {
-    const { relativeXPath, absoluteXPath, cssSelector, pointsTo } = window.XPathGrabber;
+    const { relativeXPath, absoluteXPath, cssSelector, pointsTo } = window.XPick;
     const bad = [];
     for (const el of document.querySelectorAll("body *")) {
       if (el.localName === "script") continue;
@@ -144,7 +144,7 @@ test("sweep: 150 random pages, every element gets unique locators", async ({ pag
       }
     }
 
-    const { relativeXPath, absoluteXPath, cssSelector, pointsTo } = window.XPathGrabber;
+    const { relativeXPath, absoluteXPath, cssSelector, pointsTo } = window.XPick;
     const stage = document.createElement("div");
     document.body.append(stage);
     let checked = 0;

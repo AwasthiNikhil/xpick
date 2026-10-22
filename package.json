@@ -1,5 +1,5 @@
 {
-  "name": "xpath-grabber",
+  "name": "xpick",
   "private": true,
   "scripts": {
     "test": "playwright test"
