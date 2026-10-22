@@ -40,3 +40,16 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   transition: opacity 0.3s ease;
 }
+/* Outlines for test matches, placed in page coordinates so they scroll with it */
+.xpath-match-box {
+  position: absolute;
+  z-index: 2147483646;
+  outline: 2px dashed #f59e0b;
+  background: rgba(245, 158, 11, 0.12);
+  pointer-events: none;
+}
+
+.xpath-match-box.current {
+  outline: 3px solid #f59e0b;
+  background: rgba(245, 158, 11, 0.22);
+}

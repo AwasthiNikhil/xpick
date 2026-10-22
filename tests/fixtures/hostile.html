@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Hostile page</title>
+<style>
+  /* What games and some apps do: no text selection, reset inputs, restyle every div */
+  * { user-select: none !important; -webkit-user-select: none !important; }
+  input, button { all: unset !important; font-size: 0 !important; }
+  div { position: static !important; display: block; transform: none !important; }
+</style>
+</head>
+<body>
+  <ul><li data-case="one">One</li><li data-case="two">Two</li><li data-case="three">Three</li></ul>
+  <button id="page-button">Page button</button>
+  <script>
+    // Swallow editing keys and stop the page "selecting all", like a game would
+    document.addEventListener("keydown", (e) => {
+      if (["Backspace", "Delete", "ArrowLeft", "ArrowRight", "a", " "].includes(e.key)) e.preventDefault();
+    });
+  </script>
+</body>
+</html>

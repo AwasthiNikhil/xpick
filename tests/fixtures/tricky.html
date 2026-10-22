@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>Tricky elements</title></head>
+<body>
+  <!-- data-case attributes are only handles for the tests; the generator ignores them -->
+  <div id="card"><button id="save" data-case="plain-id">Save</button></div>
+
+  <p id='say"hi"' data-case="double-quote-id">double quotes in the id</p>
+  <p id="it's &quot;fine&quot;" data-case="both-quotes-id">both quote kinds in the id</p>
+
+  <button aria-label="Close dialog" data-case="aria-label">
+    <svg width="10" height="10" data-case="svg"><path d="M0 0h10v10z" data-case="svg-path"/></svg>
+  </button>
+  <math><mi data-case="mathml">x</mi></math>
+
+  <section><div id="dup" data-case="dup-first">first</div></section>
+  <section><div id="dup" data-case="dup-second">second</div></section>
+
+  <ul>
+    <li>a</li><li>b</li><li data-testid="third" data-case="testid">c</li>
+  </ul>
+  <span data-cy="cypress-hook" data-case="data-cy">cypress</span>
+
+  <div id=":r1:" data-case="react-id">React useId</div>
+  <div id="react-:r9:" data-case="react-prefixed-id">React useId with a prefix</div>
+  <div id="ember412" data-case="ember-id">Ember</div>
+  <div id="3f2b8c1a-9d4e-4b7a-8c2d-1e5f6a7b8c9d" data-case="uuid-id">UUID</div>
+  <div id="mui-12" data-case="mui-id">MUI</div>
+  <div id="order-20231104" data-case="numeric-id">long number</div>
+
+  <form>
+    <input name="email" placeholder="you@example.com" data-case="input-name">
+    <input name="email" type="hidden">
+    <input placeholder="Search everything" data-case="placeholder">
+  </form>
+
+  <button data-case="text">
+    Sign
+    in
+  </button>
+  <button data-case="text-quotes">It's "fine"</button>
+  <button data-case="long-text">This label is far too long to make a good locator for anything at all</button>
+  <a href="/pricing" data-case="href">Plans</a>
+  <a href="/pricing">See pricing</a>
+  <img src="data:," alt="Company logo" data-case="alt">
+
+  <table>
+    <tr><th>Name</th><th>Role</th></tr>
+    <tr><td>Ada</td><td data-case="table-cell">Engineer</td></tr>
+  </table>
+
+  <div><div><div><span>deep</span><span data-case="deep-no-attrs">deeper</span></div></div></div>
+
+  <iframe srcdoc="<p>one</p><p id='inside' data-case='iframe'>inside the frame</p>" data-case="iframe-el"></iframe>
+  <div id="host" data-case="shadow-host"></div>
+  <script>
+    document.getElementById("host").attachShadow({ mode: "open" }).innerHTML = "<button>in the shadow</button>";
+  </script>
+</body>
+</html>
