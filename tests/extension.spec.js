@@ -64,7 +64,7 @@ test("the shipped manifest asks only for what it needs", () => {
   expect(manifest.permissions.sort()).toEqual(["activeTab", "scripting", "storage"]);
   expect(manifest.content_scripts).toBeUndefined(); // nothing runs on every page
   expect(manifest.host_permissions).toBeUndefined();
-  expect(manifest.commands["toggle-inspector"].suggested_key.default).toBe("Alt+Shift+X");
+  expect(manifest.commands["toggle-inspector"].suggested_key).toEqual({ default: "Ctrl+Shift+X", mac: "Command+Shift+X" });
   expect(manifest.commands["test-query"].suggested_key).toEqual({ default: "Ctrl+Shift+F", mac: "Command+Shift+F" });
 });
 

@@ -47,7 +47,7 @@ The badge next to the cursor shows the XPath you'll get and why it was picked: `
 
 | Shortcut | Default |
 |---|---|
-| Start or stop inspecting | <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>X</kbd> |
+| Start or stop inspecting | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>X</kbd> (<kbd>⌘</kbd> + <kbd>Shift</kbd> + <kbd>X</kbd> on Mac) |
 | Open the test bar on the page | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>F</kbd> (<kbd>⌘</kbd> + <kbd>Shift</kbd> + <kbd>F</kbd> on Mac) |
 
 You can change either one at `chrome://extensions/shortcuts`, or from **Edit shortcuts** in the popup.

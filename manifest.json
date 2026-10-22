@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "XPick: XPath & CSS Locator Picker",
-  "version": "1.1",
+  "version": "1.2",
   "description": "Point at any element and copy an XPath or CSS selector that matches only it. Test locators live on the page.",
   "permissions": [
     "activeTab",
@@ -17,7 +17,7 @@
   },
   "commands": {
     "toggle-inspector": {
-      "suggested_key": { "default": "Alt+Shift+X" },
+      "suggested_key": { "default": "Ctrl+Shift+X", "mac": "Command+Shift+X" },
       "description": "Turn the XPath inspector on or off"
     },
     "test-query": {
